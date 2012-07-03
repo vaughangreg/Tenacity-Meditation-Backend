@@ -1,0 +1,34 @@
+!!! 5
+html
+	head
+		title= pageInfo.title
+	body
+		form(action='/setconfig', method='post')
+			h1 Breaths Per Cycle
+			select(name= 'breathCount')
+				each num in globalConfig.possibleBreathCounts
+					- var select=null; if (globalConfig.breathCount == num) select = 'selected';
+					option(value=num, selected=select)= num
+			hr
+			br
+			h1 Available Levels
+			each val, key in globalConfig.availableStages
+				- var ch=null; if (val.value != 'false') ch='true';
+				input(name=key, type="checkbox", checked=ch)
+				| #{val.name}
+				br
+			hr 
+			br
+			h1 Negative Reinforcement Level
+			each val in globalConfig.possibleNegReinforcement
+				- var selected=null; if (globalConfig.negReinforcement == val) selected = 'selected';
+				input(name='negReinforcement', type='radio', value=val, checked=selected)
+				case val
+					when 0: label= 'Low'
+					when 1: label= 'Medium'
+					when 2: label= 'High'
+				br
+			hr
+			br
+			input(type='submit', name='sub', value='Update All Fields')
+	

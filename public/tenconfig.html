@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+p://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>tenConfig</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Greg Vaughan">
+	<!-- Date: 2012-06-29 -->
+</head>
+<body>
+	<div>
+		<form action="/setconfig" method="post">
+			<div>
+				<hr />
+				<h1>Breaths Per Cycle</h1>
+				<select name="breathCount">
+					<option value=3 selected = ''>3</option>
+					<option value=4 selected = ''>4</option>
+					<option value=5 selected = 'selected'>5</option>
+					<option value=6 selected = ''>6</option>
+					<option value=7 selected = ''>7</option>
+				</select>
+			</div>
+			<div>
+				<hr />
+				<h1>Available Levels</h1>
+				<input type="checkbox" name="gardenPath" value="true" />Garden Path<br />
+				<input type="checkbox" name="cityScape" value="true" />City Scape<br />
+				<input type="checkbox" name="stairway" value="true" />Stairway<br />
+			</div>
+			<div>
+				<hr>
+				<h1>Negative Reinforcement Level</h1>
+				<input type="radio" name="negReinforcement" value=0>Low<br />
+				<input type="radio" name="negReinforcement" value=1>Medium<br />
+				<input type="radio" name="negReinforcement" value=2>High<br />
+				
+			</div>
+			<input type="submit" value="Update All Fields">
+		</form>
+	</div>
+</body>
+</html>
