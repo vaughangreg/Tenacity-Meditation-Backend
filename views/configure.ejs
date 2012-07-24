@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title><%= pageInfo.title %></title>
+	</head>
+	<body>
+		<form action='/setconfig' method='post'>
+			<div class='BreathsPerCycle'>
+				<H1>Breaths Per Cycle</H1>
+				<select name='breathCount'>
+				<% for (var val in globalConfig.possibleBreathCounts) { 
+					var selected = "";
+					if (globalConfig.breathCount == val) selected = 'selected=selected';
+					%>
+					<option value = '<%= val %>' <%=selected%>> <%= val %> </option>				
+				<% }; %>
+				</select>
+			</div>
+			<div class='AvailableLevels'>
+				<H1>Available Levels</H1>
+				<% for ( key in Object.keys(globalConfig.availableStages)) { 
+					var checked = "";
+					if (globalConfig.availableStages[Object.keys(globalConfig.availableStages)[key]].value != 'false'){
+						checked = 'checked=checked';
+					}
+					%>
+					<input name='<%= Object.keys(globalConfig.availableStages)[key] %>' type='checkbox' <%=checked%>>
+						<%= globalConfig.availableStages[Object.keys(globalConfig.availableStages)[key]].name %>
+					</input><br/>
+				<% } %>
+			</div>
+			<div class="NegativeReinforcement">
+				<H1>Negative Reinforcement</H1>
+				<% for (val in globalConfig.possibleNegReinforcement) {
+					var checked = '';
+					if (val == globalConfig.negReinforcement){
+						checked = 'checked=checked';
+					}
+					%>
+					<input name='negReinforcement' type='radio' value='<%= val %>' <%=checked%>>
+					<% if (val == 0) { %> Low <% } %>
+					<% if (val == 1) { %> Medium <% } %>
+					<% if (val == 2) { %> High <% } %>
+					<br>
+				<% } %>
+			</div>
+			<div class='SubmitButton'>
+				<input type='submit' name='sub' value="Update All Fields">
+			</div>
+		</form>
+	</body>
+</html>
