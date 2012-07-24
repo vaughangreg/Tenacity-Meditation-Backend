@@ -10,13 +10,13 @@ var express = require('express'),
   	http = require('http');
 
 var tenConfig = require ('./tenconfigure.js');
-
+var ejs = require('ejs');
 var app = express();
 
 app.configure(function(){
 	app.set('port', serverConfig.serverSettings.node.port);
 	app.set('views', __dirname + '/views');
-	app.set('view engine', 'jade');
+	app.set('view engine', 'ejs');
 	app.use(express.favicon());
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
