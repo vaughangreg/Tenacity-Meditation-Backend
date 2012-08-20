@@ -1,17 +1,13 @@
-<html>
-	<head>
-		<title><%= pageInfo.title %></title>
-	</head>
-	<body>
+<% include partials/pageheader %>
 		<form action='/setconfig' method='post'>
 			<div class='BreathsPerCycle'>
 				<H1>Breaths Per Cycle</H1>
 				<select name='breathCount'>
 				<% for (var val in globalConfig.possibleBreathCounts) { 
 					var selected = "";
-					if (globalConfig.breathCount == val) selected = 'selected=selected';
+					if (globalConfig.breathCount == globalConfig.possibleBreathCounts[val]) selected = 'selected=selected';
 					%>
-					<option value = '<%= val %>' <%=selected%>> <%= val %> </option>				
+					<option value = '<%= globalConfig.possibleBreathCounts[val] %>' <%= selected %>> <%= globalConfig.possibleBreathCounts[val] %> </option>				
 				<% }; %>
 				</select>
 			</div>
@@ -43,9 +39,19 @@
 					<br>
 				<% } %>
 			</div>
+			<div>
+				<H1>Session Time</H1>
+				<select name='sessionTime'>
+				<% for (var val in globalConfig.possiblePlayTimes) { 
+					var selected = "";
+					if (globalConfig.sessionTime == globalConfig.possiblePlayTimes[val]) selected = 'selected=selected';
+					%>
+					<option value = '<%= globalConfig.possiblePlayTimes[val] %>' <%=selected%>> <%= globalConfig.possiblePlayTimes[val] %> </option>				
+				<% }; %>
+				</select>
+			</div>
 			<div class='SubmitButton'>
 				<input type='submit' name='sub' value="Update All Fields">
 			</div>
 		</form>
-	</body>
-</html>
+<% include partials/pagefooter %>
