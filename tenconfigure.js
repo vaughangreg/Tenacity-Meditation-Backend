@@ -53,6 +53,7 @@ exports.buildConfigForConfigPage = function (cb){
 	var buildInfo = {};
 	redisClient.get(configKey, function (error, res){
 		globalConfig = JSON.parse(res);
+		console.log(globalConfig);
 		buildInfo.globalConfig = globalConfig;
 		buildInfo.globalConfig.possibleBreathCounts = possibleBreathCounts;
 		buildInfo.globalConfig.possibleNegReinforcement = possibleNegReinforcement;
